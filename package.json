@@ -1,0 +1,27 @@
+{
+  "name": "hy-fullstack-osa3",
+  "version": "1.0.0",
+  "description": "This is a project for the third part of FullStack course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paavkar/HY-Fullstack-Osa3.git"
+  },
+  "author": "Paavo Karppinen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paavkar/HY-Fullstack-Osa3/issues"
+  },
+  "homepage": "https://github.com/paavkar/HY-Fullstack-Osa3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
