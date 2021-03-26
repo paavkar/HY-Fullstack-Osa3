@@ -1,2 +1,3 @@
 # HY-Fullstack-Osa3
- FullStack-kurssin kolmas osio
+This is my wotk on the third part of the course
+link to the phonebook app in heroku: https://nameless-lake-45431.herokuapp.com/
