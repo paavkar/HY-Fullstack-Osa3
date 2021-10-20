@@ -40,9 +40,9 @@ let persons = [
     }
   ]
 
-app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
-})
+//app.get('/', (req, res) => {
+//   res.send('<h1>Hello World!</h1>')
+//})
 
 
 app.get('/api/persons', (req,res) => {
@@ -92,18 +92,12 @@ const generateId = (maksimi) => {
 }
 */
 
-app.post('/api/persons', (req,res) => {
+app.post('/api/persons', (req, res, next) => {
     const body = req.body
     
     if (body.name === undefined) {
         return res.status(400).json({
             error : 'name missing'
-        })
-    }
-
-    else if (false) {
-        return res.status(400).json({
-             error : 'name must be unique'
         })
     }
 
@@ -119,9 +113,13 @@ app.post('/api/persons', (req,res) => {
     })
 
     //console.log(person)
-    person.save().then(savedPerson => {
-        res.json(savedPerson)
+    person
+    .save()
+    .then(savedPerson => savedPerson.toJSON())
+    .then(savedAndFormattedPerson => {
+        res.json(savedAndFormattedPerson)
     })
+    .catch(error => next(error))
 })
 
 
@@ -145,6 +143,8 @@ const errorHandler = (error, req, res, next) => {
     console.error(error.message)
     if (error.name === 'CastError') {
       return res.status(400).send({ error: 'malformatted id'})
+    } else if (error.name === 'ValidationError') {
+        return res.status(400).json({ error: error.message })
     }
     next(error)
 }

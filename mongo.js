@@ -47,14 +47,14 @@ if (process.argv.length == 5) {
   })
 }
 
-/*
+
 Person.find({}).then( result => {
   result.forEach(person => {
     console.log(person)
   })
   mongoose.connection.close()
 })
-*/
+
 
 /*
 note.save().then(response => {
