@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
@@ -5,8 +6,8 @@ const url = process.env.MONGODB_URI
 
 console.log('connecting to', url)
 
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
-  .then( result => {
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+  .then( () => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -27,10 +28,10 @@ const personSchema = new mongoose.Schema({
     unique: true
   }
 })
-  
+
 personSchema.plugin(uniqueValidator)
 
-if (process.argv.length == 3) {
+if (process.argv.length === 3) {
   console.log('phonebook:')
   Person.find({}).then( result => {
     result.forEach(person => {
@@ -41,14 +42,14 @@ if (process.argv.length == 3) {
 }
 
 //const person = new Person({
-  //name: process.argv[3],
-  //number: process.argv[4]
+//name: process.argv[3],
+//number: process.argv[4]
 //})
 
 
 
-if (process.argv.length == 5) {
-  person.save().then(response => {
+if (process.argv.length === 5) {
+  person.save().then(() => {
     console.log(`added ${process.argv[3]} number ${process.argv[4]} to phonebook`)
     mongoose.connection.close()
   })
